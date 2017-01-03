@@ -25,10 +25,11 @@ module.exports = function (host, port, payload, callback) {
               console.log('UDP message sent to ' + host +':'+ port);
               client.close();
 
-              callback(err);
+              
             });
 
           });
         }, delayTime);
     }
+  callback(err);
 }
