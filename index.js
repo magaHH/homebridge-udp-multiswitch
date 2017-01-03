@@ -113,8 +113,6 @@ UdpMultiswitch.prototype = {
                     default:
                         this.log.error('Unknown switchType in request callback');
                 }
-
-                callback(error);
             }
         }.bind(this));
     },
