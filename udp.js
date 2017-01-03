@@ -31,4 +31,24 @@ module.exports = function (host, port, payload, callback) {
           });
         }, delayTime);
     }
+    function sendMultiPackets(payloadMessage){
+        var client = dgram.createSocket('udp4');
+        var delayTime = Math.floor(Math.random() * 1000) + 1;
+        var message = new Buffer(payloadMessage[0], 'hex');
+        var message2 = new Buffer(payloadMessage[1], 'hex');
+        setTimeout(function() { 
+          client.send(broadcast, 0, broadcast.length, port, host, function(err, bytes) {
+            if (err) throw err;
+            console.log('UDP message sent to ' + host +':'+ port);
+            setTimeout(function() {
+              client.send(message2, 0, message2.length, port, host, function(err, bytes) {
+                if (err) throw err;
+                console.log('UDP message2 sent to ' + host +':'+ port);
+                client.close();
+                callback(err);
+              });
+            }, 50);
+          });
+        }, delayTime);
+    }
 }
