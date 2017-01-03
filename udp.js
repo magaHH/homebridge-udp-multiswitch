@@ -3,9 +3,7 @@ module.exports = function (host, port, payload, callback) {
   var dgram = require('dgram');
   
   if (typeof payload === 'object') {
-      for (var i = 0; i < payload.length; i++){
-        sendPackets(payload[i]);
-      };
+        sendMultiPackets(payload);
   }
   else {
        sendPackets(payload);
@@ -31,6 +29,7 @@ module.exports = function (host, port, payload, callback) {
           });
         }, delayTime);
     }
+  
     function sendMultiPackets(payloadMessage){
         var client = dgram.createSocket('udp4');
         var delayTime = Math.floor(Math.random() * 1000) + 1;
