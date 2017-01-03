@@ -43,13 +43,13 @@ UdpMultiswitch.prototype = {
                 udp(host, port, payload[i], function (err) {
                     callback(err);
                 });  
-            }
+            };
         }
         else {
             udp(host, port, payload, function (err) {
                 callback(err);
             });
-        },
+        };
     },
 
     setPowerState: function(targetService, powerState, callback, context) {
