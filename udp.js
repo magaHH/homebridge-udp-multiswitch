@@ -32,7 +32,7 @@ module.exports = function (host, port, payload, callback) {
   
     function sendMultiPackets(payloadMessage){
         var client = dgram.createSocket('udp4');
-        var delayTime = Math.floor(Math.random() * 1000) + 1;
+        var delayTime = Math.floor(Math.random() * 200) + 1;
         var message = new Buffer(payloadMessage[0], 'hex');
         var message2 = new Buffer(payloadMessage[1], 'hex');
         setTimeout(function() { 
