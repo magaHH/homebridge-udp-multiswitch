@@ -38,7 +38,7 @@ UdpMultiswitch.prototype = {
 
     udpRequest: function(host, port, payload, callback) {
         
-        if (typeof payload === 'object) {
+        if (typeof payload === 'object') {
             for (var i = 0; i < payload.length; i++){
                 udp(host, port, payload[i], function (err) {
                     callback(err);
