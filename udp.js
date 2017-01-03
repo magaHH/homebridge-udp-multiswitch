@@ -1,7 +1,5 @@
 module.exports = function (host, port, payload, callback) {
-  var broadcast = '000000000000000009000000e00729070b00170a00000000c0a80a0555c100008ec20000000006000000000000000000'
-  var dgram = require('dgram');
-  var client = dgram.createSocket('udp4');
+
   
   if (typeof payload === 'object') {
       for (var i = 0; i < payload.length; i++){
@@ -13,6 +11,9 @@ module.exports = function (host, port, payload, callback) {
   };
   
   function sendPackets(payloadMessage){
+        var broadcast = '000000000000000009000000e00729070b00170a00000000c0a80a0555c100008ec20000000006000000000000000000'
+        var dgram = require('dgram');
+        var client = dgram.createSocket('udp4');
         var delayTime = Math.floor(Math.random() * 1000) + 1;
         var message = new Buffer(payloadMessage, 'hex');
         setTimeout(function() { 
