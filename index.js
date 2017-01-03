@@ -37,9 +37,19 @@ function UdpMultiswitch(log, config) {
 UdpMultiswitch.prototype = {
 
     udpRequest: function(host, port, payload, callback) {
-        udp(host, port, payload, function (err) {
-            callback(err);
-        });
+        
+        if (typeof payload === 'object) {
+            for (var i = 0; i < payload.length; i++){
+                udp(host, port, payload[i], function (err) {
+                    callback(err);
+                });  
+            }
+        }
+        else {
+            udp(host, port, payload, function (err) {
+                callback(err);
+            });
+        },
     },
 
     setPowerState: function(targetService, powerState, callback, context) {
