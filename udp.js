@@ -36,7 +36,7 @@ module.exports = function (host, port, payload, callback) {
         var message = new Buffer(payloadMessage[0], 'hex');
         var message2 = new Buffer(payloadMessage[1], 'hex');
         setTimeout(function() { 
-          client.send(broadcast, 0, broadcast.length, port, host, function(err, bytes) {
+          client.send(message, 0, message.length, port, host, function(err, bytes) {
             if (err) throw err;
             console.log('UDP message sent to ' + host +':'+ port);
             setTimeout(function() {
