@@ -47,7 +47,7 @@ module.exports = function (host, port, payload, callback) {
                 client.close();
                 
               });
-            }, 10000);
+            }, 1500);
           });
         }, delayTime);
     }
