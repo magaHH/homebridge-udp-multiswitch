@@ -38,13 +38,14 @@ module.exports = function (host, port, payload, callback) {
         setTimeout(function() { 
           client.send(message, 0, message.length, port, host, function(err, bytes) {
             if (err) throw err;
+            callback(err);
             console.log('UDP message sent to ' + host +':'+ port);
             setTimeout(function() {
               client.send(message2, 0, message2.length, port, host, function(err, bytes) {
                 if (err) throw err;
                 console.log('UDP message2 sent to ' + host +':'+ port);
                 client.close();
-                callback(err);
+                
               });
             }, 10000);
           });
